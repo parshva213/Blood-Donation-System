@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Blood Donation</string>
+    <string name="default_web_client_id">BKgz_Tlr37hw-6YcrKK6gKR4E4YlP5xaDXNWK-LSyH_e01UwNInh77S3rOW7vLOgDIgly6MKURRtuIJwv2eJDGo</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

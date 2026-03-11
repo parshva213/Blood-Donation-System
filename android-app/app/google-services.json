@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "775623513742",
+    "project_id": "bd-system-parshva",
+    "storage_bucket": "bd-system-parshva.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775623513742:android:7ab4a637169687eb02dbdf",
+        "android_client_info": {
+          "package_name": "com.example.bd_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9c4vcZXouw9VH7mpK-lUYSB4AJ8BXdBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
