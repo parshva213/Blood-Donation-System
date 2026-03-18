@@ -110,28 +110,34 @@ class UserDashboardActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        // Load Counts (Example structure: Donation_History/userId and Requests/userId)
-        database.getReference("Donation_History").orderByChild("userId").equalTo(userId)
+        // Load Donation Count (Filtered by donorId and isDeleted == 0)
+        database.getReference("Donation_History").orderByChild("donorId").equalTo(userId)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    var totalUnits = 0
+                    var count = 0
                     for (child in snapshot.children) {
-                        totalUnits += child.child("units").getValue(Int::class.java) ?: 0
+                        val isDeleted = child.child("isDeleted").getValue(Int::class.java) ?: 0
+                        if (isDeleted == 0) {
+                            count++
+                        }
                     }
-                    binding.tvDonationCount.text = totalUnits.toString()
+                    binding.tvDonationCount.text = count.toString()
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
 
+        // Load Request Count (Filtered by userId and isDeleted == 0)
         database.getReference("Requests").orderByChild("userId").equalTo(userId)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    var activeCount = 0
+                    var count = 0
                     for (child in snapshot.children) {
-                        // Count all requests for this user, or you can filter by "Pending" if preferred
-                        activeCount++
+                        val isDeleted = child.child("isDeleted").getValue(Int::class.java) ?: 0
+                        if (isDeleted == 0) {
+                            count++
+                        }
                     }
-                    binding.tvRequestCount.text = activeCount.toString()
+                    binding.tvRequestCount.text = count.toString()
                 }
                 override fun onCancelled(error: DatabaseError) {}
             })
